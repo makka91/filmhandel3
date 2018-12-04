@@ -1,0 +1,88 @@
+<button id = "back" (click)="goBack()">
+    Gå tillbaka
+</button>
+<br>
+<br>
+
+<table id="head">
+    <thead>
+        <tr>
+            <th>Movie ID:</th>
+            <th>Title: </th>
+            <th>Director: </th>
+            <th>Releasedate: </th>
+            <th>Language: </th>
+            <th>Genre: </th>
+            <th>Genre ID:</th>
+            <th>Ta bort</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let movie of movies">
+            <td>{{movie._id}}</td>
+            <td>{{movie.title}}</td>
+            <td>{{movie.director}}</td>
+            <td>{{movie.releaseDate}}</td>
+            <td>{{movie.language}}</td>
+            <td>{{movie.genre.name}}</td>
+            <td>{{movie.genre._id}}</td>
+            <td><button (click)="deleteItem(movie._id)">Radera</button></td>
+        </tr>
+    </tbody>
+</table><br>
+
+<div id = "form1">
+<h2>Lägg till master</h2>
+<form [formGroup]="registerForm2" (ngSubmit)="onSubmitAdd()">
+
+    <label for="title">Title</label><br><br>
+    <input type="text" formControlName="title"><br><br>
+
+    <label for="director">Director</label><br><br>
+    <input type="text" formControlName="director"><br><br>
+
+    <label for="releaseDate">Release Date</label><br><br>
+    <input type="text" formControlName="releaseDate"><br><br>
+
+    <label for="genreId">Genre ID</label><br><br>
+    <input type="text" formControlName="genreId"><br><br>
+
+    <label for="language">Language</label><br><br>
+    <input type="text" formControlName="language"><br><br>
+    
+    <button type="submit">Spara</button>
+
+</form>
+</div>
+
+<div id = "form2">
+<h2>Uppdatera Master</h2>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmitPut()">
+
+    <label for="id">Movie ID</label><br><br>
+    <input type="text" [(ngModel)]="movieId" formControlName="id"><br><br>
+
+    <label for="title">Title</label><br><br>
+    <input type="text" formControlName="title"><br><br>
+
+    <label for="director">Director</label><br><br>
+    <input type="text" formControlName="director"><br><br>
+
+    <label for="releaseDate">Release Date</label><br><br>
+    <input type="text" formControlName="releaseDate"><br><br>
+
+    <label for="genreId">Genre ID</label><br><br>
+    <input type="text" formControlName="genreId"><br><br>
+
+    <label for="language">Language</label><br><br>
+    <input type="text" formControlName="language"><br><br>
+
+    <button type="submit">Spara</button>
+
+</form>
+</div>
+<br>
+<br>
+

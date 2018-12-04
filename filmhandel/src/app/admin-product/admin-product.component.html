@@ -1,0 +1,79 @@
+<button (click)="goBack()">
+    Gå tillbaka
+</button>
+<br>
+<br>
+<table id="head">
+    <thead>
+        <tr>
+            <th>Product ID: </th>
+            <th>Movie ID: </th>
+            <th>Title: </th>
+            <th>Director: </th>
+            <th>Releasedate: </th>
+            <th>Genre: </th>
+            <th>Language: </th>
+            <th>Format: </th>
+            <th>Price: </th>
+            <th>Subtitles: </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td>{{product._id}}</td>
+            <td>{{product.movie._id}}</td>
+            <td>{{product.movie.title}}</td>
+            <td>{{product.movie.director}}</td>
+            <td>{{product.movie.releaseDate}}</td>
+            <td>{{product.movie.genre.name}}</td>
+            <td>{{product.movie.language}}</td>
+            <td>{{product.format}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.subtitles}}</td>
+            <td><button (click)="deleteProduct(product._id)">Radera</button></td>
+        </tr>
+    </tbody>
+</table><br>
+<div id = "form1">
+<h2>Lägg till produkt</h2>
+<form [formGroup]="registerForm4" (ngSubmit)="onSubmitAddPro()">
+
+    <label for="movieId">Movie ID</label><br><br>
+    <input type="text" formControlName="movieId"><br><br>
+
+    <label for="format">Format</label><br><br>
+    <input type="text" formControlName="format"><br><br>
+
+    <label for="price">Price</label><br><br>
+    <input type="text" formControlName="price"><br><br>
+
+    <label for="subtitles">Subtitles</label><br><br>
+    <input type="text" formControlName="subtitles"><br><br>
+    <button type="submit">Spara</button>
+
+</form>
+</div>
+
+<div id = "form2">
+<h2>Uppdatera produkt</h2>
+
+<form [formGroup]="registerForm3" (ngSubmit)="onSubmitPutPro()">
+
+    <label for="productId">Product ID</label><br><br>
+    <input type="text" [(ngModel)]="productId" formControlName="productId"><br><br>
+
+    <label for="movieId">Movie ID</label><br><br>
+    <input type="text" formControlName="movieId"><br><br>
+
+    <label for="format">Format</label><br><br>
+    <input type="text" formControlName="format"><br><br>
+
+    <label for="price">Price</label><br><br>
+    <input type="text" formControlName="price"><br><br>
+
+    <label for="subtitles">Subtitles</label><br><br>
+    <input type="text" formControlName="subtitles"><br><br>
+    <button type="submit">Spara</button>
+</form>
+</div>

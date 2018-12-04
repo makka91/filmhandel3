@@ -1,0 +1,39 @@
+<table id="head" *ngIf="product">
+  <thead>
+    <tr>
+      <th>Title: </th>
+      <th>Director: </th>
+      <th>Release date: </th>
+      <th>Genre: </th>
+      <th>Format: </th>
+      <th>Language: </th>
+      <th>Subtitles: </th>
+      <th>Price: </th>
+      <th>ID: </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td>{{product.movie.title}}</td>
+      <td>{{product.movie.director}}</td>
+      <td>{{product.movie.releaseDate}}</td>
+      <td>{{product.movie.genre.name}}</td>
+      <td>{{product.format}}</td>
+      <td>{{product.movie.language}}</td>
+      <td>{{product.subtitles}}</td>
+      <td>{{product.price}}kr</td>
+      <table>{{product._id}}</table>
+      <td (click)="toCart()"><button>Add to cart</button></td>
+    </tr>
+  </tbody>
+</table><br>
+
+<div *ngIf="product">
+  <img src="./assets/{{product._id}}.jpg" height="20%" width="20%">
+</div>
+<br>
+
+<button (click)="goBack()">
+  Gå tillbaka
+</button>

@@ -1,0 +1,55 @@
+<ul>
+  <li id="login">
+    <p *ngIf="movieService.isLoggedIn()">Välkommen</p>
+  </li>
+  <li id="login"><a *ngIf="!movieService.isLoggedIn()" routerLink="login">Login</a></li>
+  <li id="logout"><a *ngIf="movieService.isLoggedIn()" (click)="logout()">Logout</a></li>
+  <li id="admin"><a *ngIf="movieService.currentUser.admin" routerLink="/admin">Admin tools</a></li>
+</ul>
+<br>
+<br>
+
+<span id="searchAndSort">Choose genre:
+  <select [(ngModel)]="searchGenre">
+    <option value="">--Choose Genre--</option>
+    <option value="Adventure">Adventure</option>
+    <option value="Horror">Horror</option>
+    <option value="Drama">Drama</option>
+    <option value="Action">Action</option>
+
+  </select>
+</span>
+
+<span id="searchAndSort">Choose format:
+  <select [(ngModel)]="searchFormat">
+    <option value="">--Choose format--</option>
+    <option value="DVD">DVD</option>
+    <option value="Bluray">Bluray</option>
+  </select>
+</span>
+
+<span id="searchAndSort">
+  <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search movie" />
+</span><br><br>
+
+<table id="head">
+  <thead>
+    <tr>
+      <th>Title: </th>
+      <th>Release date: </th>
+      <th>Genre: </th>
+      <th>Format: </th>
+      <th>Price: </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let product of products | searchFormat: searchFormat | search: searchText | searchGenre: searchGenre">
+      <td><a routerLink="/detail/{{product._id}}">{{product.movie.title}}</a></td>
+      <td>{{product.movie.releaseDate}}</td>
+      <td>{{product.movie.genre.name}}</td>
+      <td>{{product.format}}</td>
+      <td>{{product.price}}kr</td>
+    </tr>
+  </tbody>
+</table><br>

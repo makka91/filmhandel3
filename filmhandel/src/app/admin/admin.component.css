@@ -1,0 +1,21 @@
+div {
+    text-align: center;
+    margin-top: 12%;
+}
+a {
+    font-size: 18px;
+    color: #111111;
+
+}
+
+a:hover {
+    color: grey;
+}
+
+button {
+    margin-bottom: 15px;
+    padding: 5px;
+    width: 80px;
+    margin-top: 15px;
+    cursor: pointer;
+}
